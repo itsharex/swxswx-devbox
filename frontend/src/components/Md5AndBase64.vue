@@ -109,7 +109,7 @@ function copyToClipboard() {
       
       <div class="output-section">
         <div class="section-header">
-          <h3>{{ outputTitle }}</h3>
+          <h3>输出</h3>
           <div class="header-buttons">
             <button
               v-for="m in modes"
