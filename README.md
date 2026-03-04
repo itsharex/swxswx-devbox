@@ -1,3 +1,7 @@
+<div align="center">
+
+<!-- <img src="./src/assets/icon.png" alt="MTools Logo" width="128" height="128"> -->
+
 # DevBox
  一款功能高度集成、界面精美的开发桌面工具集，集成多种开发常用工具：加密工具（MD5/Base64/国密SM3/URL编码）、格式化工具（JSON/XML）、文本比对工具、二维码生成等。操作便捷，为开发者提升工作效率。
 
@@ -161,7 +165,7 @@ sudo xattr -dr com.apple.quarantine /Applications/DevBox.app
 ```
 然后再次运行应用程序。
 
-
+<div align="center">
 ## 支持项目
 
 如果这个项目对你有帮助，欢迎通过以下方式支持：
@@ -169,3 +173,4 @@ sudo xattr -dr com.apple.quarantine /Applications/DevBox.app
 - 给项目一个 ⭐ Star
 - 分享给更多需要的人
 - 提交 Issue 和 Pull Request
+</div>
