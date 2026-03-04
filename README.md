@@ -165,6 +165,7 @@ sudo xattr -dr com.apple.quarantine /Applications/DevBox.app
 然后再次运行应用程序。
 
 <div align="center">
+
 ## 支持项目
 
 如果这个项目对你有帮助，欢迎通过以下方式支持：

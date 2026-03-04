@@ -124,9 +124,8 @@ jobs:
 
       - name: 重命名构建产物
         run: |
-          $version = "${{ needs.validate-tag.outputs.version }}"
           $source = "build/bin/DevBox.exe"
-          $target = "DevBox_" + $version + "_windows_x64.exe"
+          $target = "DevBox_windows_x64.exe"
           $targetPath = "build/bin/" + $target
 
           if (Test-Path $source) {
@@ -193,11 +192,10 @@ jobs:
 
       - name: 创建 DMG 安装包
         run: |
-          VERSION="${{ needs.validate-tag.outputs.version }}"
           ARCH="${{ matrix.platform }}"
           APP_NAME="DevBox"
           APP_PATH="build/bin/${APP_NAME}.app"
-          DMG_NAME="${APP_NAME}_${VERSION}_macos_${ARCH}.dmg"
+          DMG_NAME="${APP_NAME}_macos_${ARCH}.dmg"
 
           if [ ! -d "$APP_PATH" ]; then
             echo "❌ 未找到 .app 文件: $APP_PATH"
@@ -248,20 +246,12 @@ jobs:
           tag_name: ${{ needs.validate-tag.outputs.tag }}
           name: "DevBox v${{ needs.validate-tag.outputs.version }}${{ needs.validate-tag.outputs.suffix && format('-{0}', needs.validate-tag.outputs.suffix) || '' }}"
           body: |
-            ## DevBox v${{ needs.validate-tag.outputs.version }}${{ needs.validate-tag.outputs.suffix && format('-{0}', needs.validate-tag.outputs.suffix) || '' }}
 
-            ### Windows 版本
-
-            | 架构 | 文件名 |
-            |------|--------|
-            | x64 (64位) | DevBox_${{ needs.validate-tag.outputs.version }}_windows_x64.exe |
-
-            ### macOS 版本
-
-            | 架构 | 文件名 |
-            |------|--------|
-            | x64 (Intel) | DevBox_${{ needs.validate-tag.outputs.version }}_macos_x64.dmg |
-            | arm64 (Apple Silicon) | DevBox_${{ needs.validate-tag.outputs.version }}_macos_arm64.dmg |
+            | 平台 | 架构 | 文件名 |
+            |------|------|--------|
+            | Windows | x64 (64位) | DevBox_windows_x64.exe |
+            | macOS | x64 (Intel) | DevBox_macos_x64.dmg |
+            | macOS | arm64 (Apple Silicon) | DevBox_macos_arm64.dmg |
 
             ### 安装说明
 
@@ -275,9 +265,6 @@ jobs:
             3. 将应用拖到 Applications 文件夹
             4. 首次运行可能需要前往 系统设置 > 隐私与安全性 允许运行
 
-            ### 校验
-
-            请验证下载文件的完整性。
           files: |
             ./artifacts/*.exe
             ./artifacts/*.dmg
